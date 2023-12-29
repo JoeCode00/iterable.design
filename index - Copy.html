@@ -8,11 +8,11 @@
 	collectionMode:true,collectionRows:false,collectionColumns:3,showNavigationControl:true,showZoomControl:true,showHomeControl:true,showFullPageControl:true,showRotationControl:false,showSequenceControl:true,sequenceMode:false,showReferenceStrip:false,showNavigator:true,navigatorId:"",navigatorPosition:'TOP_RIGHT',referenceStripSizeRatio:0.2,referenceStripScroll:'horizontal',referenceStripPosition:'BOTTOM_LEFT'
 	
 	,tileSources: [
-					{title: 'Monte Verde\'s, Costa Rica © Alexey Tikhonov', type: 'legacy-image-pyramid',
+					{type: 'legacy-image-pyramid',
 					levels:[
 						{url: 'https://cdn.jsdelivr.net/gh/JoeCode00/iterable.design@main/images/RTS%20Tube%20Fall%202023%20Dark%20Mode%201320x1020.jpg',	width: 1320,	height:1020},
 						{url: 'https://cdn.jsdelivr.net/gh/JoeCode00/iterable.design@main/images/RTS%20Tube%20Fall%202023%20Dark%20Mode%203300x2250.jpg',	width: 3300,	height:2250},
-						{url: 'https://cdn.jsdelivr.net/gh/JoeCode00/iterable.design@main/images/RTS%20Tube%20Fall%202023%20Dark%20Mode%206600x5100.jpg',	width: 6100,	height:5100},
+						{url: 'https://cdn.jsdelivr.net/gh/JoeCode00/iterable.design@main/images/RTS%20Tube%20Fall%202023%20Dark%20Mode%206600x5100.jpg',	width: 6600,	height:5100},
 						{url: 'https://cdn.jsdelivr.net/gh/JoeCode00/iterable.design@main/images/RTS%20Tube%20Fall%202023%20Dark%20Mode%2013200x10200.jpg',	width: 13200,	height:10200},
 						
 						
@@ -21,7 +21,8 @@
 								]});
 		viewer.curItem=viewer.initialPage;
 		viewer.curZoom=viewer.initialPage;
-		viewer.goTo = function(index) {           
+		
+		/*viewer.goTo = function(index) {           
 			 this.curItem=index;    
 			 if (this.sequenceMode) this.goToPage(this.curItem);
 			 else this.viewport.fitBounds(this.world.getItemAt(this.curItem).getBounds());
@@ -55,8 +56,8 @@
 				viewer.goTo(index); 
 				viewer.showMeta(index);
 			}
-		});
-			if (viewer.sequenceMode==true) viewer.showMeta(viewer.initialPage);
+		});*/
+			//if (viewer.sequenceMode==true) viewer.showMeta(viewer.initialPage);
 			viewer.innerTracker.scrollHandler=false;
 		});</script><figure  style='width: 650px' class='wp-caption alignnone'><div class='deepzoomContainer' id='deepzoomContainer1' style='width: 650px; height: 500px;'></div></figure>
 	<script type='text/javascript'>jQuery(document).ready(function(){var viewer=OpenSeadragon({id: 'deepzoomContainer1',prefixUrl:'https://cdn.jsdelivr.net/gh/openseadragon/openseadragon@master/images/',
@@ -140,6 +141,7 @@
 				viewer.showMeta(index);
 			}
 		});
+
 			if (viewer.sequenceMode==true) viewer.showMeta(viewer.initialPage);
 		});</script><figure  style='width: 650px' class='wp-caption alignnone'><div class='deepzoomContainer' id='deepzoomContainer1' style='width: 650px; height: 500px;'></div></figure>
 	<script type='text/javascript'>jQuery(document).ready(function(){var viewer=OpenSeadragon({id: 'deepzoomContainer2',prefixUrl:'https://cdn.jsdelivr.net/gh/openseadragon/openseadragon@master/images/',
