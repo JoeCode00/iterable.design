@@ -1,7 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-<script>
 var r = document.querySelector(':root');
 function CSS_set(variable, property) {
   	r.style.setProperty(variable, property);
@@ -283,5 +279,4 @@ $('.randomcube').on('click', function() {
       randomizeFont(currentFont);
     }
 });
-  
-</script>
+
