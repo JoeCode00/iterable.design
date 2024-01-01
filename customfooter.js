@@ -280,3 +280,16 @@ $('.randomcube').on('click', function() {
     }
 });
 
+if (document.getElementById('rtsmapdarkmode') != null){
+	var darkmodemap = document.getElementById('rtsmapdarkmode');
+	var lightmodemap = document.getElementById('rtsmaplightmode');
+	if (Cookies.get("colorPalette").match(/\d+/g).map(Number)[2] > 35){
+		var maptoremove = darkmodemap;
+	}
+	if (Cookies.get("colorPalette") == null){
+		var maptoremove = darkmodemap;
+	}
+	else{ var maptoremove = lightmodemap;}
+	maptoremove.setAttribute("style","display: none");
+	maptoremove.style.display = "none";
+}
