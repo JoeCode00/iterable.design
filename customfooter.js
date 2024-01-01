@@ -107,7 +107,7 @@ function paletteSet(colorPalette){
   	ColorSet('--colors--imversecolormode',pH, 				100,				-100*colorMode,  	pA)
   
 
-  	if (getSwitchState("bwtextswitch") == 'checked'){
+  	if (getSwitchState("bwtextswitch") != 'unchecked'){
   	ColorSet('--colors--text', 		pH+360*colorMode, 	visS(pS-100*colorMode),	50-50*colorMode, 	pA);
     }
   	else {
@@ -204,7 +204,8 @@ function hslToHex(h, s, l) { //https://stackoverflow.com/questions/36721830/conv
 	
 }
   
-function getSwitchState(Id){  
+function getSwitchState(Id){
+  if (document.getElementById(Id) != null){
   let classList = document.getElementById(Id).children[0].classList;
   let state = 'unchecked';
   for (const sliderClass of Array.from(classList)) {
@@ -212,18 +213,22 @@ function getSwitchState(Id){
   }
   Cookies.set(Id, state);
   return state;
+	}
+	else {return null}
 }
   
 function setSwitchState(Id, goalState){
-  let classList = document.getElementById(Id).children[0].classList;
-  if (goalState == 'checked' & getSwitchState(Id) != 'checked'){
-    classList.add('w--redirected-checked')
-    
+	if (document.getElementById(Id) != null){
+	  let classList = document.getElementById(Id).children[0].classList;
+	  if (goalState == 'checked' & getSwitchState(Id) != 'checked'){
+	    classList.add('w--redirected-checked')
+	    
+		}
+	  if (goalState == 'unchecked' & getSwitchState(Id) != 'unchecked'){
+	    classList.remove('w--redirected-checked')
+		}
+	  Cookies.set(Id, goalState)
 	}
-  if (goalState == 'unchecked' & getSwitchState(Id) != 'unchecked'){
-    classList.remove('w--redirected-checked')
-	}
-  Cookies.set(Id, goalState)
 }
 
   CSS_set('--fonts--simsun', 'simsun')
