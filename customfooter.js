@@ -1,7 +1,4 @@
-
-
-
-  $(function() {
+$(function() {
     var running = false;
     $("#upperbar").scroll(function() {
       if (running) {
