@@ -1,4 +1,109 @@
-var r = document.querySelector(':root');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<!--<script src="https://cdn.statically.io/gh/JoeCode00/iterable.design@main/customfooter.js"></script>-->
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+  .fullwrapper {
+    /*width: 400px;
+    height: 220px*/
+  }
+
+  .upperbar {
+    /*height: 10%;
+    width: 100%;*/
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .portfolioscroller {
+    /*height: 90%;
+    width: 100%;*/
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .upperbardiv {
+    /*height: 100%;*/
+  }
+
+  .portfoliocontainer {
+    /*width: 1000px;*/
+    /*height: 100%;*/
+    /*overflow: auto;*/
+  }
+
+</style>
+
+
+<script>
+  $(function() {
+    var running = false;
+    $("#upperbar").scroll(function() {
+      if (running) {
+        running = false;
+        return;
+      }
+      running = true;
+      $("#portfolioscroller")
+        .scrollLeft($("#upperbar").scrollLeft());
+    });
+    $("#portfolioscroller").scroll(function() {
+      if (running) {
+        running = false;
+        return;
+      }
+      running = true;
+      $("#upperbar")
+        .scrollLeft($("#portfolioscroller").scrollLeft());
+    });
+  });
+
+  let pxwidth = document.querySelector('#portfoliocontainer').clientWidth;
+  let txtwidth = pxwidth + "px"
+
+  document.querySelector('#upperbardiv').setAttribute("style", "width:" + txtwidth);
+  document.querySelector('#upperbardiv').style.width = txtwidth;
+</script>
+
+<script type="text/javascript">
+      $(function() {
+    var running = false;
+    $(".wrapper1").scroll(function() {
+      if (running) {
+        running = false;
+        return;
+      }
+      running = true;
+      $(".wrapper2")
+        .scrollLeft($(".wrapper1").scrollLeft());
+    });
+    $(".wrapper2").scroll(function() {
+      if (running) {
+        running = false;
+        return;
+      }
+      running = true;
+      $(".wrapper1")
+        .scrollLeft($(".wrapper2").scrollLeft());
+    });
+  });
+</script>
+
+<style>
+  .double-scroll {
+    width: 400px;
+  }
+  #sample2{
+    width: 100%;
+  }
+</style>
+
+<script>
+  
+  var r = document.querySelector(':root');
 function CSS_set(variable, property) {
   	r.style.setProperty(variable, property);
 }
@@ -28,7 +133,7 @@ function ColorSet(variable, hue, saturation, lightness, opacity){
   	let RGBAText = 'rgba(';
   	let parameter = RGBAText.concat(RGBArray[0],', ',RGBArray[1],', ',RGBArray[2],', ', BoundOpacity(opacity),')');
   	CSS_set(variable, parameter);
-  	Cookies.set(variable, parameter, { expires: 365 });
+  	Cookies.set(variable, parameter, {expires: 365,  sameSite:'strict'});
   	//console.log(variable, hue, saturation, lightness, opacity, parameter)
 }
 function randomizePalette(){
@@ -57,7 +162,7 @@ function paletteSet(colorPalette){
   	let pS = arrayHSLA[1];
   	let pL = arrayHSLA[2];
   	let pA = arrayHSLA[3]
-  	Cookies.set("colorPalette", colorPalette, { expires: 365 });
+  	Cookies.set("colorPalette", colorPalette, { expires: 365,  sameSite:'strict' });
   	/*switch(colorPalette){
     	case 'default':	pH = 0;		pS = 31, 	pL = 43; 	break; 
     	case 'red':		pH = 0, 	pS = 100, 	pL = 43; 	break;
@@ -90,13 +195,13 @@ function paletteSet(colorPalette){
   	var bgDesaturate = 35 - 5*colorMode
   
   	//   	set var name, 				hue,	 			saturation, 		lightness,			base opacity
-    ColorSet('--colors--0', 			pH+0*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-    ColorSet('--colors--1', 			pH+1*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-  	ColorSet('--colors--2', 			pH+2*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-  	ColorSet('--colors--3', 			pH+3*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-  	ColorSet('--colors--4', 			pH+4*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-  	ColorSet('--colors--5', 			pH+5*hueSpread, 	visS(pS), 			visL(pL),  			pA)
-  	ColorSet('--colors--6', 			pH+6*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+    ColorSet('--colors--0', 			pH-1*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+    ColorSet('--colors--1', 			pH+0*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+  	ColorSet('--colors--2', 			pH+1*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+  	ColorSet('--colors--3', 			pH+2*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+  	ColorSet('--colors--4', 			pH+3*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+  	ColorSet('--colors--5', 			pH+4*hueSpread, 	visS(pS), 			visL(pL),  			pA)
+  	ColorSet('--colors--6', 			pH+5*hueSpread, 	visS(pS), 			visL(pL),  			pA)
   	ColorSet('--colors--gray-1', 		pH, 				visS(100*colorMode),visL(100*colorMode),pA-0.8)
   	ColorSet('--colors--gray-2', 		pH, 				visS(100*colorMode),visL(100*colorMode),pA-0.6)
   	ColorSet('--colors--gray-3', 		pH, 				visS(100*colorMode),visL(100*colorMode),pA-0.5)
@@ -116,8 +221,14 @@ function paletteSet(colorPalette){
 }
 function getPalette(){
   // Check if no color palette set, else set the palette
-  if (Cookies.get("colorPalette") == null) {return 'hsla(232,100,43,1)'}
+  if (Cookies.get("colorPalette") == null) {return defaultPallette()}
 	else {return Cookies.get("colorPalette")}
+}
+
+function defaultPallette(){
+  var getDefaultFromBody = document.querySelector('.body').attributes.color1
+	if (getDefaultFromBody != null){return getDefaultFromBody.value}
+  	else {return "hsla(232,100,43,1)"}
 }
 
 if (Cookies.get("bwtextswitch") == null) {setSwitchState("bwtextswitch", 'checked')}
@@ -190,7 +301,6 @@ function sliderColorBoundsSet(hue, saturation, lightness){
   
 }
 
-
 function hslToHex(h, s, l) { //https://stackoverflow.com/questions/36721830/convert-hsl-to-rgb-and-hex
   l /= 100;
   const a = s * Math.min(l, 1 - l) / 100;
@@ -200,8 +310,6 @@ function hslToHex(h, s, l) { //https://stackoverflow.com/questions/36721830/conv
     return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
   };
   return `#${f(0)}${f(8)}${f(4)}`;
-  
-	
 }
   
 function getSwitchState(Id){
@@ -211,7 +319,7 @@ function getSwitchState(Id){
   for (const sliderClass of Array.from(classList)) {
   if (sliderClass == 'w--redirected-checked') {state = 'checked';}
   }
-  Cookies.set(Id, state);
+  Cookies.set(Id, state, { expires: 365,  sameSite:'strict' });
   return state;
 	}
 	else {return null}
@@ -227,7 +335,7 @@ function setSwitchState(Id, goalState){
 	  if (goalState == 'unchecked' & getSwitchState(Id) != 'unchecked'){
 	    classList.remove('w--redirected-checked')
 		}
-	  Cookies.set(Id, goalState)
+	  Cookies.set(Id, goalState, { expires: 365,  sameSite:'strict' })
 	}
 }
 
@@ -257,7 +365,7 @@ function fontFamilySet(fontFamily){
 	});
 
   	document.getElementById(fontFamily).classList.add('underlined');
-	Cookies.set("fontFamily", fontFamily, { expires: 365 });
+	Cookies.set("fontFamily", fontFamily, { expires: 365,  sameSite:'strict' });
   	CSS_set('--fonts--current-font', fontFamily);
 }
 
@@ -288,13 +396,24 @@ $('.randomcube').on('click', function() {
 if (document.getElementById('rtsmapdarkmode') != null){
 	var darkmodemap = document.getElementById('rtsmapdarkmode');
 	var lightmodemap = document.getElementById('rtsmaplightmode');
-	if (Cookies.get("colorPalette").match(/\d+/g).map(Number)[2] > 35){
+	
+  	try{
+      if (Cookies.get("colorPalette").match(/\d+/g) == null){
+          var maptoremove = darkmodemap;
+      }
+      else{
+        if (Cookies.get("colorPalette").match(/\d+/g).map(Number)[2] > 35){
+          var maptoremove = darkmodemap;
+          }
+        else {var maptoremove = lightmodemap;}
+      }
+    }
+  	catch(err){
 		var maptoremove = darkmodemap;
-	}
-	if (Cookies.get("colorPalette") == null){
-		var maptoremove = darkmodemap;
-	}
-	else{ var maptoremove = lightmodemap;}
+      	console.log(err.message);
+    }
 	maptoremove.setAttribute("style","display: none");
 	maptoremove.style.display = "none";
 }
+
+</script>
