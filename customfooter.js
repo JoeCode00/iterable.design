@@ -48,17 +48,6 @@ $(function() {
         .scrollLeft($(".wrapper2").scrollLeft());
     });
   });
-</script>
-
-<style>
-  .double-scroll {
-    width: 400px;
-  }
-  #sample2{
-    width: 100%;
-  }
-</style>
-
   
   var r = document.querySelector(':root');
 function CSS_set(variable, property) {
