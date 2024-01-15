@@ -1,44 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-<!--<script src="https://cdn.statically.io/gh/JoeCode00/iterable.design@main/customfooter.js"></script>-->
-
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<style>
-  .fullwrapper {
-    /*width: 400px;
-    height: 220px*/
-  }
-
-  .upperbar {
-    /*height: 10%;
-    width: 100%;*/
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-
-  .portfolioscroller {
-    /*height: 90%;
-    width: 100%;*/
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-
-  .upperbardiv {
-    /*height: 100%;*/
-  }
-
-  .portfoliocontainer {
-    /*width: 1000px;*/
-    /*height: 100%;*/
-    /*overflow: auto;*/
-  }
-
-</style>
 
 
-<script>
+
   $(function() {
     var running = false;
     $("#upperbar").scroll(function() {
@@ -66,9 +28,8 @@
 
   document.querySelector('#upperbardiv').setAttribute("style", "width:" + txtwidth);
   document.querySelector('#upperbardiv').style.width = txtwidth;
-</script>
 
-<script type="text/javascript">
+
       $(function() {
     var running = false;
     $(".wrapper1").scroll(function() {
@@ -101,7 +62,6 @@
   }
 </style>
 
-<script>
   
   var r = document.querySelector(':root');
 function CSS_set(variable, property) {
@@ -415,5 +375,3 @@ if (document.getElementById('rtsmapdarkmode') != null){
 	maptoremove.setAttribute("style","display: none");
 	maptoremove.style.display = "none";
 }
-
-</script>
