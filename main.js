@@ -20,34 +20,34 @@ $(function() {
     });
   });
 
+if (document.querySelector('#portfoliocontainer') != null){
   let pxwidth = document.querySelector('#portfoliocontainer').clientWidth;
   let txtwidth = pxwidth + "px"
 
   document.querySelector('#upperbardiv').setAttribute("style", "width:" + txtwidth);
   document.querySelector('#upperbardiv').style.width = txtwidth;
-
-
       $(function() {
     var running = false;
     $(".wrapper1").scroll(function() {
       if (running) {
-        running = false;
-        return;
+	running = false;
+	return;
       }
       running = true;
       $(".wrapper2")
-        .scrollLeft($(".wrapper1").scrollLeft());
+	.scrollLeft($(".wrapper1").scrollLeft());
     });
     $(".wrapper2").scroll(function() {
       if (running) {
-        running = false;
-        return;
+	running = false;
+	return;
       }
       running = true;
       $(".wrapper1")
-        .scrollLeft($(".wrapper2").scrollLeft());
+	.scrollLeft($(".wrapper2").scrollLeft());
     });
   });
+}
   
   var r = document.querySelector(':root');
 function CSS_set(variable, property) {
