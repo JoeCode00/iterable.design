@@ -315,7 +315,8 @@ function fontFamilySet(fontFamily){
   	CSS_set('--fonts--current-font', fontFamily);
 }
 
-function randomizeFont(currentFont){
+function randomizeFont(){
+	let currentFont = Cookies.get("fontFamily");
  	let fontCollection = document.getElementsByClassName("navbar-font");
     const validRandomFontNames = []
     Array.from(fontCollection).forEach(function (element) {
@@ -329,20 +330,17 @@ function randomizeFont(currentFont){
 
 $('.randomcube').on('click', function() {
   	let attrToRandomize = $(this).attr('data-randomize');
-  	if (attrToRandomize == 'design') {
-      randomizeDesign();
-    }
+  	if (attrToRandomize == 'design') {//randomizeDesign();
+	    randomizePalette();
+	    randomizeFont();
+	}
   	if (attrToRandomize == 'color') {randomizePalette();}
-  	if (attrToRandomize == 'font') {
-      let currentFont = Cookies.get("fontFamily")
-      randomizeFont(currentFont);
-    }
+  	if (attrToRandomize == 'font')  {randomizeFont();}
 });
 
 if (document.getElementById('rtsmapdarkmode') != null){
 	var darkmodemap = document.getElementById('rtsmapdarkmode');
 	var lightmodemap = document.getElementById('rtsmaplightmode');
-	
   	try{
       if (Cookies.get("colorPalette").match(/\d+/g) == null){
           var maptoremove = darkmodemap;
