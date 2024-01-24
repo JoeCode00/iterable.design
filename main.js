@@ -313,23 +313,7 @@ function SliderUserUpdate() {
 
   let HHSLAText = 'hhsla(';
   paletteSet(HHSLAText.concat(hue.toString(), ',', hue2.toString(), ',', saturation.toString(), ',', lightness.toString(), ',1)'));
-  //sliderColorBoundsSet(hue, saturation, lightness);
-
 }
-
-/*
-function sliderColorBoundsSet(hue, saturation, lightness) {
-
-  //hue doesn't update
-
-  CSS_set('--slider--saturationlower', hslToHex(hue, 0, lightness));
-  CSS_set('--slider--saturationupper', hslToHex(hue, 100, lightness));
-  CSS_set('--slider--lightnesslower', hslToHex(hue, saturation, 0));
-  CSS_set('--slider--lightnessmiddle', hslToHex(hue, saturation, 50));
-  CSS_set('--slider--lightnessupper', hslToHex(hue, saturation, 100));
-
-}
-*/
 
 function hslToHex(h, s, l) { //https://stackoverflow.com/questions/36721830/convert-hsl-to-rgb-and-hex
   l /= 100;
