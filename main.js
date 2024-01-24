@@ -224,10 +224,10 @@ function getPalette() {
   // Check if no color palette set, else set the palette
   let currentCookie = Cookies.get("colorPalette");
 
-  if (Cookies.get("colorPalette") == null) {
-    return defaultPallette()
+  if (validatePalette(currentCookie)) {
+    return currentCookie;
   } else {
-    return Cookies.get("colorPalette")
+    return defaultPallette()
   }
 }
 
