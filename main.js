@@ -130,12 +130,12 @@ function visL(pL) {
 function paletteSet(colorPalette) {
 
   
-  arrayHSLA = (colorPalette).match(/\d+/g).map(Number);
-  let pH = arrayHSLA[0];
-  let sH = arrayHSLA[1];
-  let pS = arrayHSLA[2];
-  let pL = arrayHSLA[3];
-  let pA = arrayHSLA[4]
+  arrayHHSLA = (colorPalette).match(/\d+/g).map(Number);
+  let pH = arrayHHSLA[0];
+  let sH = arrayHHSLA[1];
+  let pS = arrayHHSLA[2];
+  let pL = arrayHHSLA[3];
+  let pA = arrayHHSLA[4]
   Cookies.set("colorPalette", colorPalette, {
     expires: 365,
     sameSite: 'strict'
@@ -199,8 +199,31 @@ function paletteSet(colorPalette) {
   }
 }
 
+function validatePalette(possiblePalette){
+  if (possiblePalette.slice(0,5) != 'HHSLA'){
+    console.log('invalid palette cookie' + possiblePalette);
+    return False;
+  }
+  try{
+    arrayHHSLA = (possiblePalette).match(/\d+/g).map(Number);
+  }
+  catch{
+    console.log('invalid palette cookie' + possiblePalette);
+    return False;
+  }
+
+  if (arrayHHSLA.some(isNan)){
+    console.log('invalid palette cookie' + possiblePalette);
+    return False;
+  }
+
+  return True;
+}
+
 function getPalette() {
   // Check if no color palette set, else set the palette
+  let currentCookie = Cookies.get("colorPalette");
+
   if (Cookies.get("colorPalette") == null) {
     return defaultPallette()
   } else {
@@ -231,7 +254,7 @@ setTimeout(function() {
 $("#bwtextswitch").on('click', function() {
   setTimeout(function() {
     paletteSet(getPalette());
-    console.log('clicked');
+    //console.log('clicked');
   }, 10);
 
 });
@@ -415,19 +438,11 @@ $('.randomcube').on('click', function() {
 if (document.getElementById('rtsmapdarkmode') != null) {
   var darkmodemap = document.getElementById('rtsmapdarkmode');
   var lightmodemap = document.getElementById('rtsmaplightmode');
-  try {
-    if (Cookies.get("colorPalette").match(/\d+/g) == null) {
-      var maptoremove = darkmodemap;
-    } else {
-      if (Cookies.get("colorPalette").match(/\d+/g).map(Number)[2] > 35) {
-        var maptoremove = darkmodemap;
-      } else {
-        var maptoremove = lightmodemap;
-      }
-    }
-  } catch (err) {
+  
+  if (getPalette().match(/\d+/g).map(Number)[2] > 35) {
     var maptoremove = darkmodemap;
-    console.log(err.message);
+  } else {
+    var maptoremove = lightmodemap;
   }
   maptoremove.setAttribute("style", "display: none");
   maptoremove.style.display = "none";
