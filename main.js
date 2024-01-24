@@ -212,8 +212,8 @@ function validatePalette(possiblePalette){
     return false;
   }
 
-  if (arrayHHSLA.some(isNan)){
-    console.log('invalid palette cookie' + possiblePalette);
+  if (arrayHHSLA.some(isNaN)){
+    console.log('invalid palette cookie ' + possiblePalette);
     return false;
   }
 
