@@ -174,7 +174,7 @@ function paletteSet(colorPalette) {
   var bgDesaturate = 35 - 5 * colorMode
 
   //   	set var name, 				hue,	 			saturation, 		lightness,			base opacity
-  ColorSet('--colors--0', sH - 1 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--0', pH - 0 * hueSpread, visS(pS), visL(pL), pA)
   ColorSet('--colors--1', sH + 0 * hueSpread, visS(pS), visL(pL), pA)
   ColorSet('--colors--2', sH + 1 * hueSpread, visS(pS), visL(pL), pA)
   ColorSet('--colors--3', sH + 2 * hueSpread, visS(pS), visL(pL), pA)
