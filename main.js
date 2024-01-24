@@ -128,8 +128,9 @@ function visL(pL) {
 }
 
 function paletteSet(colorPalette) {
-  arrayHSLA = (colorPalette).match(/\d+/g).map(Number);
 
+  
+  arrayHSLA = (colorPalette).match(/\d+/g).map(Number);
   let pH = arrayHSLA[0];
   let pS = arrayHSLA[1];
   let pL = arrayHSLA[2];
@@ -138,20 +139,20 @@ function paletteSet(colorPalette) {
     expires: 365,
     sameSite: 'strict'
   });
-  /*switch(colorPalette){
-    	case 'default':	pH = 0;		pS = 31, 	pL = 43; 	break; 
-    	case 'red':		pH = 0, 	pS = 100, 	pL = 43; 	break;
-    	case 'green':	pH = 110, 	pS = 100, 	pL = 43; 	break;
-    	case 'blue':	pH = 217, 	pS = 100, 	pL = 45; 	break;    
-  	}*/
 
   var hueSlider = document.getElementById("hue-slider");
+  var hueSlider2 = document.getElementById("hue-slider-2");
   var saturationSlider = document.getElementById("saturation-slider");
   var lightnessSlider = document.getElementById("lightness-slider");
-  hueSlider.value = pH;
+
+  hueSlider.value = pH; //primary hue
   saturationSlider.value = pS;
   lightnessSlider.value = pL;
+
+  sH = hueSlider2.value; //secondary hue
+
   document.getElementById("hue-slider-value").innerText = pH;
+  document.getElementById("hue-slider-value-2").innerText = sH;
   document.getElementById("saturation-slider-value").innerText = pS;
   document.getElementById("lightness-slider-value").innerText = pL;
 
@@ -173,13 +174,13 @@ function paletteSet(colorPalette) {
   var bgDesaturate = 35 - 5 * colorMode
 
   //   	set var name, 				hue,	 			saturation, 		lightness,			base opacity
-  ColorSet('--colors--0', pH - 1 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--1', pH + 0 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--2', pH + 1 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--3', pH + 2 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--4', pH + 3 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--5', pH + 4 * hueSpread, visS(pS), visL(pL), pA)
-  ColorSet('--colors--6', pH + 5 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--0', sH - 1 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--1', sH + 0 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--2', sH + 1 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--3', sH + 2 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--4', sH + 3 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--5', sH + 4 * hueSpread, visS(pS), visL(pL), pA)
+  ColorSet('--colors--6', sH + 5 * hueSpread, visS(pS), visL(pL), pA)
   ColorSet('--colors--gray-1', pH, visS(100 * colorMode), visL(100 * colorMode), pA - 0.8)
   ColorSet('--colors--gray-2', pH, visS(100 * colorMode), visL(100 * colorMode), pA - 0.6)
   ColorSet('--colors--gray-3', pH, visS(100 * colorMode), visL(100 * colorMode), pA - 0.5)
@@ -189,11 +190,10 @@ function paletteSet(colorPalette) {
   ColorSet('--colors--colormode', pH, 100, 100 * colorMode, pA)
   ColorSet('--colors--imversecolormode', pH, 100, -100 * colorMode, pA)
 
-
   if (getSwitchState("bwtextswitch") != 'unchecked') {
-    ColorSet('--colors--text', pH + 360 * colorMode, visS(pS - 100 * colorMode), 50 - 50 * colorMode, pA);
+    ColorSet('--colors--text', sH + 360 * colorMode, visS(pS - 100 * colorMode), 50 - 50 * colorMode, pA);
   } else {
-    ColorSet('--colors--text', pH + 360 * colorMode, visS(pS - 100 * colorMode), visL(pL - 100 * colorMode), pA);
+    ColorSet('--colors--text', sH + 360 * colorMode, visS(pS - 100 * colorMode), visL(pL - 100 * colorMode), pA);
   }
 }
 
