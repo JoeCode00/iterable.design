@@ -202,22 +202,22 @@ function paletteSet(colorPalette) {
 function validatePalette(possiblePalette){
   if (possiblePalette.slice(0,5) != 'HHSLA'){
     console.log('invalid palette cookie' + possiblePalette);
-    return False;
+    return false;
   }
   try{
     arrayHHSLA = (possiblePalette).match(/\d+/g).map(Number);
   }
   catch{
     console.log('invalid palette cookie' + possiblePalette);
-    return False;
+    return false;
   }
 
   if (arrayHHSLA.some(isNan)){
     console.log('invalid palette cookie' + possiblePalette);
-    return False;
+    return false;
   }
 
-  return True;
+  return true;
 }
 
 function getPalette() {
