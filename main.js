@@ -149,7 +149,7 @@ function paletteSet(colorPalette) {
   saturationSlider.value = pS;
   lightnessSlider.value = pL;
 
-  sH = hueSlider2.value; //secondary hue
+  sH = parseInt(hueSlider2.value); //secondary hue
 
   document.getElementById("hue-slider-value").innerText = pH;
   document.getElementById("hue-slider-value-2").innerText = sH;
@@ -241,6 +241,7 @@ $('.navbar-color').on('click', function() {
 
 $(function() {
   let hueSlider = document.getElementById("hue-slider");
+  let hueSlider2 = document.getElementById("hue-slider-2");
   let saturationSlider = document.getElementById("saturation-slider");
   let lightnessSlider = document.getElementById("lightness-slider");
 
@@ -250,7 +251,7 @@ $(function() {
   });
 
   $('#hue-slider-2').on("input change", function() {
-    document.getElementById("hue-slider-value-2").innerText = hueSlider.value;
+    document.getElementById("hue-slider-value-2").innerText = hueSlider2.value;
     SliderUserUpdate();
   });
 
