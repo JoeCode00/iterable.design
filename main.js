@@ -249,6 +249,11 @@ $(function() {
     SliderUserUpdate();
   });
 
+  $('#hue-slider-2').on("input change", function() {
+    document.getElementById("hue-slider-value-2").innerText = hueSlider.value;
+    SliderUserUpdate();
+  });
+
 
   $('#saturation-slider').on("input change", function() {
     document.getElementById("saturation-slider-value").innerText = saturationSlider.value;
