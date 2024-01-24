@@ -123,7 +123,7 @@ function randomizePalette() {
 }
 
 function visS(pS) {
-  return Math.max(Math.min(pS, 100), 50)
+  return Math.max(Math.min(pS, 100), 20)
 }
 
 function visL(pL) {
