@@ -108,14 +108,17 @@ function randomizePalette() {
   let AL = 1,
     AU = 1;
   let H = getRandomInt(HL, HU);
+  let H2 = getRandomInt(HL, HU);
   let S = getRandomInt(SL, SU);
   let L = getRandomInt(LL, LU);
   let A = getRandomInt(AL, AU);
-  let HSLAText = 'hsla(';
-  let newPalette = HSLAText.concat(H.toString(), ', ',
-    S.toString(), ', ',
-    L.toString(), ', ',
-    A.toString(), ')');
+  let HSLAText = 'hhsla(';
+  let newPalette = HSLAText.concat(
+    H.toString(),  ', ',
+    H2.toString(), ', ',
+    S.toString(),  ', ',
+    L.toString(),  ', ',
+    A.toString(),  ')');
   paletteSet(newPalette);
 }
 
