@@ -200,6 +200,11 @@ function paletteSet(colorPalette) {
 }
 
 function validatePalette(possiblePalette){
+  if (typeof possiblePalette != 'string'){
+    console.log('invalid palette cookie ' + possiblePalette);
+    return false;
+  }
+
   if (possiblePalette.slice(0,5) != 'hhsla'){
     console.log('invalid palette cookie ' + possiblePalette);
     return false;
