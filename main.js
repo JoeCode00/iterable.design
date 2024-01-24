@@ -132,9 +132,10 @@ function paletteSet(colorPalette) {
   
   arrayHSLA = (colorPalette).match(/\d+/g).map(Number);
   let pH = arrayHSLA[0];
-  let pS = arrayHSLA[1];
-  let pL = arrayHSLA[2];
-  let pA = arrayHSLA[3]
+  let sH = arrayHSLA[1];
+  let pS = arrayHSLA[2];
+  let pL = arrayHSLA[3];
+  let pA = arrayHSLA[4]
   Cookies.set("colorPalette", colorPalette, {
     expires: 365,
     sameSite: 'strict'
@@ -146,10 +147,11 @@ function paletteSet(colorPalette) {
   var lightnessSlider = document.getElementById("lightness-slider");
 
   hueSlider.value = pH; //primary hue
+  hueSlider2.value = sH; //secondary hue
   saturationSlider.value = pS;
   lightnessSlider.value = pL;
 
-  sH = parseInt(hueSlider2.value); //secondary hue
+  //sH = parseInt(hueSlider2.value); //secondary hue
 
   document.getElementById("hue-slider-value").innerText = pH;
   document.getElementById("hue-slider-value-2").innerText = sH;
@@ -207,11 +209,11 @@ function getPalette() {
 }
 
 function defaultPallette() {
-  var getDefaultFromBody = document.querySelector('.body').attributes.color1
+  var getDefaultFromBody = document.querySelector('.body').attributes.colorPalette
   if (getDefaultFromBody != null) {
     return getDefaultFromBody.value
   } else {
-    return "hsla(232,100,43,1)"
+    return "hhsla(232,248,100,43,1)"
   }
 }
 
@@ -269,19 +271,22 @@ $(function() {
 
 function SliderUserUpdate() {
   let hueSlider = document.getElementById("hue-slider");
+  let hueSlider2 = document.getElementById("hue-slider-2");
   let saturationSlider = document.getElementById("saturation-slider");
   let lightnessSlider = document.getElementById("lightness-slider");
 
   let hue = parseInt(hueSlider.value);
+  let hue2 = parseInt(hueSlider2.value);
   let saturation = parseInt(saturationSlider.value);
   let lightness = parseInt(lightnessSlider.value);
 
-  let HSLAText = 'hsla(';
-  paletteSet(HSLAText.concat(hue.toString(), ',', saturation.toString(), ',', lightness.toString(), ',1)'));
-  sliderColorBoundsSet(hue, saturation, lightness);
+  let HHSLAText = 'hhsla(';
+  paletteSet(HHSLAText.concat(hue.toString(), ',', hue2.toString(), ',', saturation.toString(), ',', lightness.toString(), ',1)'));
+  //sliderColorBoundsSet(hue, saturation, lightness);
 
 }
 
+/*
 function sliderColorBoundsSet(hue, saturation, lightness) {
 
   //hue doesn't update
@@ -293,6 +298,7 @@ function sliderColorBoundsSet(hue, saturation, lightness) {
   CSS_set('--slider--lightnessupper', hslToHex(hue, saturation, 100));
 
 }
+*/
 
 function hslToHex(h, s, l) { //https://stackoverflow.com/questions/36721830/convert-hsl-to-rgb-and-hex
   l /= 100;
