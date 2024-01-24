@@ -163,9 +163,9 @@ function paletteSet(colorPalette) {
 
   CSS_set('--slider--saturationlower', hslToHex(pH, visS(0), visL(pL)));
   CSS_set('--slider--saturationupper', hslToHex(pH, visS(100),visL(pL)));
-  CSS_set('--slider--lightnesslower', hslToHex(pH, visS(pS),  visL(0)));
-  CSS_set('--slider--lightnessmiddle', hslToHex(pH, visS(pS), visL(50)));
-  CSS_set('--slider--lightnessupper', hslToHex(pH, visS(pS),  visL(100)));
+  CSS_set('--slider--lightnesslower', hslToHex(pH, visS(pS),  0));
+  CSS_set('--slider--lightnessmiddle', hslToHex(pH, visS(pS), 50));
+  CSS_set('--slider--lightnessupper', hslToHex(pH, visS(pS),  100));
 
   // lightmode = 1, darkmode = -1
   if (pL >= 35) {
